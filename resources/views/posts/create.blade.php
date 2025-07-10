@@ -1,29 +1,30 @@
 @extends('layout')
 
 @section('content')
-    <div class="bg-white shadow rounded p-4">
+<div class="container">
+    <div class="header fade-in-up">
+        <h1>Buat Post Baru</h1>
+        <p>Tulis ide Anda di sini!</p>
+    </div>
+    
+    <div class="form-container fade-in-up">
         <form action="{{ route('posts.store') }}" method="POST" class="space-y-4">
             @csrf
-
-            <div>
-                <label class="block font-medium">Judul</label>
-                <input type="text" name="title" class="w-full border rounded px-3 py-2" required>
+            <div class="form-group">
+                <label class="form-label">Judul</label>
+                <input type="text" name="title" class="form-input" placeholder="Masukkan judul yang menarik..." required>
             </div>
-
-            <div>
-                <label class="block font-medium">Konten</label>
-                <textarea name="content" rows="4" class="w-full border rounded px-3 py-2" required></textarea>
+            
+            <div class="form-group">
+                <label class="form-label">Konten</label>
+                <textarea name="content" class="form-textarea" placeholder="Tulis konten Anda di sini..." required></textarea>
             </div>
-
-            <div class="flex items-center space-x-4">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
-                    Simpan
-                </button>
-
-                <a href="{{ route('posts.index') }}" class="text-gray-600 underline">
-                    Kembali
-                </a>
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Simpan Post</button>
+                <a href="{{ route('posts.index') }}" class="btn btn-secondary">Kembali</a>
             </div>
         </form>
     </div>
+</div>
 @endsection

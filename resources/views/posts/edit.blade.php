@@ -1,30 +1,32 @@
 @extends('layout')
 
 @section('content')
-    <div class="bg-white shadow rounded p-4">
+<div class="container">
+    <div class="header fade-in-up">
+        <h1>Edit Post</h1>
+        <p>Perbarui konten Anda</p>
+    </div>
+    
+    <div class="form-container fade-in-up">
         <form action="{{ route('posts.update', $post->id) }}" method="POST" class="space-y-4">
             @csrf
             @method('PUT')
-
-            <div>
-                <label class="block font-medium">Judul</label>
-                <input type="text" name="title" value="{{ $post->title }}" class="w-full border rounded px-3 py-2" required>
+            
+            <div class="form-group">
+                <label class="form-label">Judul</label>
+                <input type="text" name="title" value="{{ $post->title }}" class="form-input" required>
             </div>
-
-            <div>
-                <label class="block font-medium">Konten</label>
-                <textarea name="content" rows="4" class="w-full border rounded px-3 py-2" required>{{ $post->content }}</textarea>
+            
+            <div class="form-group">
+                <label class="form-label">Konten</label>
+                <textarea name="content" class="form-textarea" required>{{ $post->content }}</textarea>
             </div>
-
-            <div class="flex items-center space-x-4">
-                <button type="submit" class="bg-yellow-500 text-white px-4 py-2 rounded">
-                    Update
-                </button>
-
-                <a href="{{ route('posts.index') }}" class="text-gray-600 underline">
-                    Kembali
-                </a>
+            
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Update Post</button>
+                <a href="{{ route('posts.index') }}" class="btn btn-third">Kembali</a>
             </div>
         </form>
     </div>
+</div>
 @endsection
